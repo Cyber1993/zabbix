@@ -9,4 +9,4 @@ sudo docker run \
 -e POSTGRES_PASSWORD="zabbix" \
 -e ZBX_SERVER_HOST="zabbix-server" \
 -e PHP_TZ="Europe/Kiev" \
--d yurashupik/zabbix:2
+-d yurashupik/zabbix:3
