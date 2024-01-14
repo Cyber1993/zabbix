@@ -16,7 +16,7 @@ pipeline  {
             steps {
                 sh '''
                 cd /var/lib/jenkins/workspace/
-         
+                rm -rf xabbix
                 git clone https://github.com/Cyber1993/zabbix.git
                 '''
             }                
@@ -24,8 +24,8 @@ pipeline  {
         stage("Build") {
             steps {
                 sh '''
-                cd /var/lib/jenkins/workspace/ansible-jenkins/Ansinle
-                docker build -t yurashupik/md221 .
+                cd /var/lib/jenkins/workspace/xabbix
+                docker build -t yurashupik/zabbix:nmd221 .
                 '''
             }
         } 
@@ -33,8 +33,8 @@ pipeline  {
             steps {
                 sh '''
                 docker run \
-                --name ansible \
-                -d yurashupik/md221
+                --name zabbix \
+                -d yurashupik/zabbix:nmd221
                 '''
             }
         }
