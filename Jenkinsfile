@@ -25,7 +25,9 @@ pipeline  {
             steps {
                 sh '''
                 cd /var/lib/jenkins/workspace/zabbix
-                run Postgresql
+                run Postgresql.sh
+                run Zabbixserver.sh
+                run Zabbixwebserver.sh
                 '''
             }
         stage("Build") {
