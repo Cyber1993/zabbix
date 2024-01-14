@@ -12,15 +12,7 @@ pipeline  {
         timestamps()
     }
     stages {
-        stage("Git clone") {
-            steps {
-                sh '''
-                cd /var/lib/jenkins/workspace/
-                rm -rf zabbix
-                git clone https://github.com/Cyber1993/zabbix.git
-                '''
-            }                
-        } 
+       
         stage("base") {
             steps {
                 sh '''
@@ -29,13 +21,15 @@ pipeline  {
                 ln -s /usr/share/zoneinfo/Europe/Kiev localtime
                 echo 'Europe/Kiev' > timezone
                 '''
-            }  
+            } 
+        }
         stage("network") {
             steps {
                 sh '''
                 sudo docker network create zabbix-net            
                 '''
             }
+        }
           stage("Postgresql") {
             steps {
                 sh '''
@@ -50,6 +44,7 @@ pipeline  {
                    docker pull yurashupik/zabbix:1
                 '''
             }
+          }
         stage("Zabbix server") {
             steps {
                 sh '''
@@ -65,6 +60,7 @@ pipeline  {
                 -d zabbix/zabbix-server-pgsql:alpine-latest
                 '''
             }
+        }
         stage("Zabbix web server") {
             steps {
                 sh '''
@@ -82,6 +78,7 @@ pipeline  {
                 -d zabbix/zabbix-web-nginx-pgsql:alpine-latest
                 '''
             }
+        }
         stage("run") {
             steps {
                 sh '''
@@ -90,8 +87,7 @@ pipeline  {
                 sudo docker start zabbix-web
                 '''
             }
-
-
+        }
     
                 
         stage("docker login") {
