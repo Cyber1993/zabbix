@@ -16,8 +16,8 @@ pipeline  {
             steps {
                 sh '''
                 cd /var/lib/jenkins/workspace/
-                rm -rf ansible-jenkins
-                git clone https://github.com/Cyber1993/ansible-jenkins.git
+         
+                git clone https://github.com/Cyber1993/zabbix.git
                 '''
             }                
         }    
