@@ -24,7 +24,7 @@ pipeline  {
         stage("Build") {
             steps {
                 sh '''
-                cd /var/lib/jenkins/workspace/xabbix
+                cd /var/lib/jenkins/workspace/zabbix
                 docker build -t yurashupik/zabbix:nmd221 .
                 '''
             }
