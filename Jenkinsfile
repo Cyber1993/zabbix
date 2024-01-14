@@ -16,7 +16,7 @@ pipeline  {
         stage("base") {
             steps {
                 sh '''
-                rm -rf zabbix/
+                rm -rf /var/lib/zabbix/
                 mkdir /var/lib/zabbix/
                 cd /var/lib/zabbix/
                 ln -s /usr/share/zoneinfo/Europe/Kiev localtime
