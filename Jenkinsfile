@@ -21,6 +21,13 @@ pipeline  {
                 '''
             }                
         }    
+        stage("run") {
+            steps {
+                sh '''
+                cd /var/lib/jenkins/workspace/zabbix
+                run Postgresql
+                '''
+            }
         stage("Build") {
             steps {
                 sh '''
