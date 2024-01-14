@@ -16,7 +16,7 @@ pipeline  {
             steps {
                 sh '''
                 cd /var/lib/jenkins/workspace/
-                rm -rf xabbix
+                rm -rf zabbix
                 git clone https://github.com/Cyber1993/zabbix.git
                 '''
             }                
