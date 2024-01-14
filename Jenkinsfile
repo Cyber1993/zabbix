@@ -30,23 +30,9 @@ pipeline  {
                 run Zabbixwebserver.sh
                 '''
             }
-        stage("Build") {
-            steps {
-                sh '''
-                cd /var/lib/jenkins/workspace/zabbix
-                docker build -t yurashupik/zabbix:nmd221 .
-                '''
-            }
-        } 
-        stage("docker run") {
-            steps {
-                sh '''
-                docker run \
-                --name zabbix \
-                -d yurashupik/zabbix:nmd221
-                '''
-            }
-        }
+
+
+                
         stage("docker login") {
             steps {
                 echo " ============== docker login =================="
