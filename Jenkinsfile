@@ -16,6 +16,7 @@ pipeline  {
         stage("base") {
             steps {
                 sh '''
+                rm -rf zabbix/
                 mkdir /var/lib/zabbix/
                 cd /var/lib/zabbix/
                 ln -s /usr/share/zoneinfo/Europe/Kiev localtime
@@ -26,6 +27,7 @@ pipeline  {
         stage("network") {
             steps {
                 sh '''
+                docker network rm zabbix-net
                 docker network create zabbix-net            
                 '''
             }
